@@ -312,7 +312,7 @@ int main(){
 
     cout << endl;
 
-    cout << "Ratu : \"Apakah ingin menyimpan solusiku dalam file?\"" << endl;
+    cout << "Ratu : \"Apakah ingin menyimpan solusi yang ku dapat nanti ke dalam file?\"" << endl;
     cout << "1. Ya" << endl;
     cout << "2. Tidak" << endl;
 
@@ -332,11 +332,18 @@ int main(){
 	}
     waktuakhir = clock();
     durasi = (waktuakhir - waktuawal) / CLOCKS_PER_SEC * 1000;
-    cout << "Ratu : \"Aku berhasil mendapat " << ctr << " solusi.\"\n";
-    out_file.close();
-    if(savefile == 1){
+    if(ctr != 0){
+        cout << "Ratu : \"Aku berhasil mendapat " << ctr << " solusi.\"\n";
+        if(savefile == 1){
         cout << "Ratu : \"Solusi berhasil disimpan di file.\"\n";
     }
+    }
+    else{
+        cout << "Ratu : \"Aku tidak dapat menemukan solusi.\"\n";
+    }
+    
+    out_file.close();
+    
     cout << fixed << "Ratu : \"Waktu eksekusi : " << (float)durasi << " ms\"" << endl;
     return 0;
 }
