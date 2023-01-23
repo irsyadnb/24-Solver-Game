@@ -186,7 +186,7 @@ int main(){
         cout << "Ratu : \"Pilihan cara memilih kartu yang akan diberikan kepadaku!\"" << endl;
         cout << "1. Random" << endl;
         cout << "2. Input kartu" << endl;
-        cout << "Masukan : ";
+        cout << "> ";
         cin >> input1;
         if(input1 == 1 || input1 == 2){
             cek = true;
@@ -230,7 +230,7 @@ int main(){
             int ctr1;
             int ctr0;
 
-            cout << "Masukkan kartu : ";
+            //cout << "Masukkan kartu : ";
             getline(cin, n);
             for(int i = 0; i<n.length(); i++){
                 m = n[i];
@@ -290,13 +290,20 @@ int main(){
                 cukup = true;
                 valid = validate(kartu);
             } 
-            else{
+            else if (startinput){
                 cout << "Ratu : \"Pastikan hanya 4 kartu!\"" << endl;
                 cukup = false;
                 valid = validate(kartu);
             }
             if(!valid && startinput){
                 cout << "Ratu : \"Terdapat kartu yang salah!\"" << endl;
+            }
+
+            if(!startinput){
+                cout << "Masukan kartu : " << endl;
+            }
+            else if (!cukup || !valid){
+                cout << "Masukan kartu : " << endl;
             }
             kartutemp = kartu;
             
@@ -316,8 +323,17 @@ int main(){
     cout << "1. Ya" << endl;
     cout << "2. Tidak" << endl;
 
-    cout << "Masukan : ";
+    cout << "> ";
     cin >> savefile;
+
+    if(savefile==1){
+        cout << "Masukan nama file : " << endl;
+        cin >> namafile;
+    }
+    else{
+        remove("../test/Hasil.txt");
+    }
+    
     waktuawal = clock();
     for (auto x : perm) {
         vector<float> cards;
@@ -331,19 +347,27 @@ int main(){
         ctr += perhitungan(a,b,c,d,savefile);
 	}
     waktuakhir = clock();
-    durasi = (waktuakhir - waktuawal) / CLOCKS_PER_SEC * 1000;
+    durasi = (waktuakhir - waktuawal) / CLOCKS_PER_SEC;
     if(ctr != 0){
         cout << "Ratu : \"Aku berhasil mendapat " << ctr << " solusi.\"\n";
         if(savefile == 1){
-        cout << "Ratu : \"Solusi berhasil disimpan di file.\"\n";
+        cout << "Ratu : \"Solusi berhasil disimpan di file " << namafile << ".txt\"" << endl;
+        ifstream inFile("../test/Hasil.txt");
+        ofstream outFile("../test/"+namafile);
+        outFile << inFile.rdbuf();
+        remove("../test/Hasil.txt");
     }
     }
     else{
         cout << "Ratu : \"Aku tidak dapat menemukan solusi.\"\n";
+        if(savefile==1){
+            cout << "Ratu : \"Tidak melakukan penyimpanan file.\"\n";
+            remove("../test/Hasil.txt");
+        }
     }
     
     out_file.close();
     
-    cout << fixed << "Ratu : \"Waktu eksekusi : " << (float)durasi << " ms\"" << endl;
+    cout << fixed << "Ratu : \"Waktu eksekusi : " << (float)durasi << " detik\"" << endl;
     return 0;
 }
