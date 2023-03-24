@@ -1,17 +1,17 @@
-# Permainan Kartu 24
+# 24 Solver game
 
-Program ini digunakan untuk menyelesaikan permainan kartu 24 dengan memberi semua kemungkinan solusi yang dapat diperoleh. Program ini menggunakan algoritma `Brute-Force` dengan bahasa C++. User dapat memilih apakah ingin memasukkan empat input kartu atau memilih agar program menghasilkan empat kartu acak. User juga dapat memilih ingin menyimpan solusi dalam file .txt atau tidak.
+This program is used to solve the 24 card game by providing all possible solutions that can be obtained. The program uses the Brute-Force algorithm with the C++ language. Users can choose whether to enter four input cards or choose the program to generate four random cards. Users can also choose whether to save the solutions in a .txt file or not.
 
-## Prasyarat
+## Getting Started
 - GNU g++ compiler
 
-## Cara menjalankan
-User dapat menjalankan file 24solver.exe di folder `bin`.
+## How To Run
+Users can run the 24solver.exe file in the bin folder.
 
-User juga dapat meng-compile sendiri file `24solver.cpp` di folder `src`
-1. Buka terminal
-2. Ketik `g++ -o <nama> 24solver.cpp` 
-3. Jalankan `<nama>.exe`
+Users can also compile the 24solver.cpp file in the src folder themselves : 
+1. Open a terminal
+2. Type g++ -o <name> 24solver.cpp
+3. Run <name>.exe
 
 ## Author
 Irsyad Nurwidianto Basuki / 13521072
